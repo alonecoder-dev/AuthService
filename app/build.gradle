@@ -17,17 +17,17 @@ repositories {
 
 ext {
     lombokVersion = "1.18.30"
+    springBootVersion = "3.3.0"
 }
 
 dependencies {
     implementation libs.guava
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap', version: '4.1.1'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server:$springBootVersion"
+    implementation "org.springframework.boot:spring-boot-starter-security:$springBootVersion"
     implementation 'org.modelmapper:modelmapper:3.2.0'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.33'
     implementation group: 'org.projectlombok', name:'lombok', version: "$lombokVersion"
@@ -38,10 +38,10 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
     implementation 'io.jsonwebtoken:jjwt-impl:0.12.5'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.12.5'
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation "org.springframework.boot:spring-boot-starter:$springBootVersion"
     testImplementation libs.junit
 }
-
+// ...existing code...
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
