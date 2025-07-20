@@ -1,4 +1,4 @@
-package authservice.request;
+package org.authservice.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

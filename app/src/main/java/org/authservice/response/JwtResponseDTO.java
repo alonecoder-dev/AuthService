@@ -1,12 +1,16 @@
-package org.authservice.request;
+package org.authservice.response;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefreshTokenRequestDTO {
+@Builder
+public class JwtResponseDTO {
+
+    private String accessToken;
     private String token;
 }
