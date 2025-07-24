@@ -1,11 +1,10 @@
-// Apply the necessary plugins for a Spring Boot application
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.0'
-    id 'io.spring.dependency-management' // Manages dependency versions
+    // Downgraded Spring Boot to a compatible version
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.5'
 }
 
-// Set the group and version for your project
 group = 'org.authservice'
 version = '0.0.1-SNAPSHOT'
 
@@ -16,32 +15,33 @@ repositories {
 // Define variables for versions to keep the file clean
 ext {
     lombokVersion = "1.18.30"
-    springBootVersion = "3.3.0"
 }
 
 dependencies {
-    // Your existing dependencies go here...
-    implementation "org.springframework.boot:spring-boot-starter-web"
-    implementation "org.springframework.boot:spring-boot-starter-actuator"
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.1.1'
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
-    implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
-    implementation "org.springframework.boot:spring-boot-starter-security"
-    implementation 'org.modelmapper:modelmapper:3.2.0'
+
+    // Database and Utilities
     implementation 'mysql:mysql-connector-java:8.0.33'
-    
-    // Lombok
+    implementation 'org.modelmapper:modelmapper:3.2.0'
+
+    // Lombok for less boilerplate code
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     testImplementation "org.projectlombok:lombok:${lombokVersion}"
 
-    // JWT
+    // JWT for token-based authentication
     implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
     implementation 'io.jsonwebtoken:jjwt-impl:0.12.5'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.12.5'
 
-    // Testing
+    // Testing dependencies
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.2'
 }
@@ -55,4 +55,9 @@ java {
 // This tells the Spring Boot plugin what the main entry point of your application is
 bootJar {
     mainClass = 'org.authservice.App'
+}
+
+// This is needed for running tests
+test {
+    useJUnitPlatform()
 }
