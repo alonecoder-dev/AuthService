@@ -4,7 +4,12 @@ import org.authservice.entities.UserInfo;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
+import lombok.Builder;
+
 @JsonNaming (PropertyNamingStrategy.SnakeCaseStrategy.class)
+@Builder
+@lombok.NoArgsConstructor
+@lombok.AllArgsConstructor
 public class UserInfoDto extends UserInfo
 {
 
