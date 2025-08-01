@@ -20,15 +20,20 @@ public class RefreshTokenService {
     @Autowired
     UserRepository userRepository;
 
-    public RefreshToken createRefreshToken(String username){
-        UserInfo userInfoExtracted = userRepository.findByUsername(username);
-        RefreshToken refreshToken = RefreshToken.builder()
-                    .userInfo(userInfoExtracted)
-                    .token(UUID.randomUUID().toString())
-                    .expiryDate(Instant.now().plusMillis(600000))
-                    .build();
-        return refreshTokenRepository.save(refreshToken);
-    }
+   public RefreshToken createRefreshToken(String username){
+    UserInfo userInfoExtracted = userRepository.findByUsername(username);
+
+    // First, check if a token already exists for this user and delete it
+    refreshTokenRepository.findByUserInfo(userInfoExtracted).ifPresent(refreshTokenRepository::delete);
+
+    // Now, create the new token
+    RefreshToken refreshToken = RefreshToken.builder()
+                .userInfo(userInfoExtracted)
+                .token(UUID.randomUUID().toString())
+                .expiryDate(Instant.now().plusMillis(600000)) // 10 minutes
+                .build();
+    return refreshTokenRepository.save(refreshToken);
+}
 
     public Optional<RefreshToken> findByToken(String token){
         return refreshTokenRepository.findByToken(token);

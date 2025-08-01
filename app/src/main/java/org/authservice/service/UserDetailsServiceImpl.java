@@ -6,7 +6,6 @@ import org.authservice.model.UserInfoDto;
 import org.authservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +65,7 @@ public class UserDetailsServiceImpl implements UserDetailsService
         String userId = UUID.randomUUID().toString();
         UserInfo userInfo = new UserInfo(userId, userInfoDto.getUsername(), userInfoDto.getPassword(), new HashSet<>());
         userRepository.save(userInfo);
-        // pushEventToQueue
+        // pushEventToQueue Todo
         userInfoProducer.sendEventToKafka(userInfoDto);
         return true;
     }
