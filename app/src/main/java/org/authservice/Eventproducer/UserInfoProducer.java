@@ -1,6 +1,6 @@
 package org.authservice.Eventproducer;
 
-import org.authservice.model.UserInfoDto;
+import org.authservice.dto.UserInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;

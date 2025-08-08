@@ -1,8 +1,8 @@
 package org.authservice.serializer;
 
-import org.authservice.model.UserInfoDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Serializer;
+import org.authservice.dto.UserInfoDto;
 
 import java.util.Map;
 

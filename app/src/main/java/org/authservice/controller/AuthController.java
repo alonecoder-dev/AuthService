@@ -1,7 +1,7 @@
 package org.authservice.controller;
 
+import org.authservice.dto.UserInfoDto;
 import org.authservice.entities.RefreshToken;
-import org.authservice.model.UserInfoDto;
 import org.authservice.response.JwtResponseDTO;
 import org.authservice.service.JwtService;
 import org.authservice.service.RefreshTokenService;

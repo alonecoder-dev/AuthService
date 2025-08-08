@@ -2,7 +2,7 @@ package org.authservice.service;
 
 import org.authservice.entities.UserInfo;
 import org.authservice.Eventproducer.UserInfoProducer;
-import org.authservice.model.UserInfoDto;
+import org.authservice.dto.UserInfoDto;
 import org.authservice.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
